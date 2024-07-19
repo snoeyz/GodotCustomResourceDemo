@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PlayerInventory" load_steps=2 format=3 uid="uid://dhbpvp02li8ab"]
+
+[ext_resource type="Script" path="res://scripts/player_inventory.gd" id="1_5h1hr"]
+
+[resource]
+script = ExtResource("1_5h1hr")
+coin_count = 0

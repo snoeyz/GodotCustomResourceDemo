@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://v5jl3ewy0xu0"]
+
+[ext_resource type="Texture2D" uid="uid://6srun2sgwoi3" path="res://assets/IMG_0647.JPG" id="1_7r8o4"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_m74yb"]
+[ext_resource type="PackedScene" uid="uid://c0w62dkcvj3l3" path="res://scenes/player.tscn" id="2_chkn8"]
+[ext_resource type="Resource" uid="uid://dhbpvp02li8ab" path="res://data/player_inventory.tres" id="2_mw6yp"]
+[ext_resource type="PackedScene" uid="uid://cfqf4eknr5kql" path="res://scenes/hud.tscn" id="4_slqc0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0r61y"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yn28a"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6iqxn"]
+normal = Vector2(-1, 0)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_m74yb")
+player_inventory = ExtResource("2_mw6yp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(575, 324)
+scale = Vector2(0.235198, 0.198469)
+texture = ExtResource("1_7r8o4")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(0, 646)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_0r61y")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("WorldBoundaryShape2D_yn28a")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(1150, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("WorldBoundaryShape2D_6iqxn")
+
+[node name="Player" parent="." instance=ExtResource("2_chkn8")]
+position = Vector2(115, 458)
+
+[node name="HUD" parent="." instance=ExtResource("4_slqc0")]
