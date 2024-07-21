@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 		player_inventory.unreference()
 		update_reference_count()
 	elif Input.is_action_just_pressed("ui_cancel"):
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://scenes/start_game_menu.tscn")
 
 func update_coin_count() -> void:
 	coin_label.text = "Coins Collected: %d" % player_inventory.coin_count
