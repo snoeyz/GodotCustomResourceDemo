@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bta34k4vwixtl"]
+[gd_scene load_steps=2 format=3 uid="uid://0dhnkc3qxhcb"]
 
-[ext_resource type="Script" path="res://scripts/start_game_menu.gd" id="1_dxmkv"]
+[sub_resource type="GDScript" id="GDScript_3u6dn"]
+script/source = "extends CanvasLayer
+
+@onready var start_game_button: Button = $StartGameButton
+
+
+func _on_start_game_button_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/world.tscn\")
+"
 
 [node name="StartGameMenu" type="CanvasLayer"]
-script = ExtResource("1_dxmkv")
+script = SubResource("GDScript_3u6dn")
 
 [node name="StartGameButton" type="Button" parent="."]
 anchors_preset = 8
